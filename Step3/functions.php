@@ -17,7 +17,7 @@ $script = <<<EOT
 var vals = {
   en: {
     fields: {
-      
+
       insertTenWeekReminderAfter: "#gform_page_4_6 .gform_page_fields",
       lmpWeeksLabel: "#field_4_59 > .gfield_label",
       dateSelect: "#input_4_19",
@@ -349,6 +349,19 @@ function bones_register_sidebars() {
     'before_title' => '<h2 class="h3 module__title">',
     'after_title' => '</h2>',
   ));
+  register_sidebar(array(
+    'id' => 'sidebar-advertising',
+    'name' => __( 'Advertising Sidebar', 'bonestheme' ),
+    'description' => __( 'The advertising sidebar.', 'bonestheme' ),
+    'before_widget' => '<div id="%1$s" class="module module--primary cf %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="h3 module__title">',
+    'after_title' => '</h3>',
+  ));
+  add_action('after_setup_theme', 'bonestheme');
+  function bonestheme_setup(){
+      load_theme_textdomain('safe2choose-test', get_template_directory() . '/languages');
+  }
 
 } // don't remove this bracket!
 /* DON'T DELETE THIS CLOSING TAG */
