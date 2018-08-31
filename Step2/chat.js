@@ -59,23 +59,25 @@
 
     switch (locale) {
       case 'es':
-          offlineGreeting = "Leave us a message";
+          offlineGreeting = "Nuestros consejeros no están disponibles en este momento, por favor deje un mensaje y nos contactaremos con usted pronto";
           break;
       case 'pt-pt':
-          offlineGreeting = 'Deixe uma mensagem';
+          offlineGreeting = '
+99/5000
+Nossos conselheiros não estão disponíveis no momento, por favor deixe uma mensagem e entraremos em contato em breve';
             break;
       case 'fr':
-          offlineGreeting = 'Laissez un message';
+          offlineGreeting = 'Nos conseillers ne sont pas disponibles pour le moment, veuillez laisser un message et nous vous contacterons bientôt';
           break;
       case 'hi':
-          offlineGreeting = "हमें एक संदेश छोड़ दो";
+          offlineGreeting = "हमारे सलाहकार इस समय उपलब्ध नहीं हैं, कृपया एक संदेश छोड़ दें और हम जल्द ही आपसे संपर्क करेंगेो";
           break;
       case 'pl':
-          offlineGreeting = "Zostaw nam wiadomość";
+          offlineGreeting = "Nasi doradcy nie są w tej chwili dostępni, zostaw wiadomość, a wkrótce się z Tobą skontaktujemy";
           break;
 
       default:
-          offlineGreeting = "Leave us a message";
+          offlineGreeting = "Our counselors are not available at the moment, please leave a message and we will contact you soon";
     }
   }
 
