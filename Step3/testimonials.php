@@ -7,9 +7,7 @@ Template Name: Testimonials Page
 	<div id="content" class="content">
 		<div class="inner-content wrapper cf grid--four-two">
 			<main id="main" class="module module--primary" role="main" itemscope itemprop="mainContentOfPage">
-
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'module__inner' ); ?> role="article">
 					<header class="article-header module__inner__header">
 						<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
@@ -39,8 +37,11 @@ Template Name: Testimonials Page
 				<article role="article">
 					<section class="entry-content" itemprop="articleBody">
 						<?php
+						<!-- -->
 							$testimonials_args = array (
 								'post_type' => 'testimonials',
+								/*We create a custom query, who is the form to say a Wordpress, these are the argument who you need to pass to the query.
+								The argument posts_per_page I say to wordpress, select -1 posts per page and show me*/
 								'posts_per_page' => -1,
 								'orderby' => 'date',
 								'order' => 'DESC'
