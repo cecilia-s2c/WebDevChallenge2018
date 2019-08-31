@@ -23,10 +23,10 @@ Template.hello.events({
     // Send count to Meteor server
     Meteor.call("counts.set", Meteor.userId(), count, (error, result) => {
       if(error) {
-        console.log("error", error);
+        //console.log("error", error);
       }
       if(result) {
-        console.log('sent count to Meteor server');
+        //console.log('sent count to Meteor server');
       }
     });
 
@@ -35,10 +35,10 @@ Template.hello.events({
       count: count
     }, (error, result) => {
       if(error) {
-        console.log("error", error);
+        //console.log("error", error);
       }
       if(result){
-        console.log('sent count to secure.safe2choose.org');
+        //console.log('sent count to secure.safe2choose.org');
       }
     });
 
