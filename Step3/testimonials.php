@@ -10,10 +10,10 @@ Template Name: Testimonials Page
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'module__inner' ); ?> role="article">
 					<header class="article-header module__inner__header">
-						<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+						<h1 class="page-title" itemprop="headline"><a href = "<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
 					</header> <?php // end article header ?>
 					<section class="entry-content cf module__inner__section" itemprop="articleBody">
-						<?php the_content(); ?>
+						<?php the_excerpt(); ?>
 					</section> <?php // end article section ?>
 				</article>
 				<?php endwhile; else : ?>
@@ -36,6 +36,7 @@ Template Name: Testimonials Page
 				<article role="article">
 					<section class="entry-content" itemprop="articleBody">
 						<?php
+							//'posts_per_page' => -1: It returns all posts from wp_posts table
 							$testimonials_args = array (
 								'post_type' => 'testimonials',
 								'posts_per_page' => -1,
@@ -50,12 +51,12 @@ Template Name: Testimonials Page
 									?>
 										<div class="quote" itemprop="review" itemscope="" itemtype="http://schema.org/Review">
 											<blockquote class="testimonials-text" itemprop="reviewBody">
-												<p><?php the_content(); ?></p>
+												<p><?php the_excerpt(); ?></p>
 												<hr>
 												<p><i><?php the_date(); ?></i></p>
 											</blockquote>
 											<cite class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-												<span itemprop="name"><?php the_title(); ?></span>
+												<a href = "<?php the_permalink() ?>"><?php the_title(); ?></a>
 											</cite><!--/.author-->
 										</div><!-- End .quote -->
 									<?php } ?>
