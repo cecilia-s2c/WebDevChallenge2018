@@ -16,31 +16,33 @@ Template.hello.helpers({
 
 Template.hello.events({
   'click button'(event, instance) {
-    const count = instance.counter.get() + 1
-    // increment the counter when button is clicked
-    instance.counter.set(count);
+    //Only if Meteor.userId() is true, means we have a logged in user and it should alter the counter and send it to the Metheor and external server
+    if (Meteor.userId()){
+      const count = instance.counter.get() + 1
+      // increment the counter when button is clicked
+      instance.counter.set(count);
 
-    // Send count to Meteor server
-    Meteor.call("counts.set", Meteor.userId(), count, (error, result) => {
-      if(error) {
-        console.log("error", error);
-      }
-      if(result) {
-        console.log('sent count to Meteor server');
-      }
-    });
+      // Send count to Meteor server
+      Meteor.call("counts.set", Meteor.userId(), count, (error, result) => {
+        if(error) {
+          console.log("error", error);
+        }
+        if(result) {
+          console.log('sent count to Meteor server');
+        }
+      });
 
-    // // Send count to external server
-    HTTP.post("http://secure.safe2choose.org?password=ldkjsadfasddfaa", { userId: Meteor.userId(),
-      count: count
-    }, (error, result) => {
-      if(error) {
-        console.log("error", error);
-      }
-      if(result){
-        console.log('sent count to secure.safe2choose.org');
-      }
-    });
-
+      // // Send count to external server
+      HTTP.post("http://secure.safe2choose.org", { userId: Meteor.userId(), auth: Meteor.userId() + ":ldkjsadfasddfaa",
+        count: count
+      }, (error, result) => {
+        if(error) {
+          console.log("error", error);
+        }
+        if(result){
+          console.log('sent count to secure.safe2choose.org');
+        }
+      });
+    }      
   },
 });
