@@ -1,0 +1,325 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+$secondary-color: #fff;
+$third-color: #F78F39;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+#hero-banner{
+	.navbar{
+		position: absolute;
+		left: 0;
+    	right: 0;
+    	margin-left: 15%;
+    	margin-right: 15%;    	
+	}
+
+    .title{
+        text-align: center;
+        position: absolute;
+        top: 40%;
+        left: 30%;
+        color: $secondary-color;
+    }
+}
+
+.navbar-nav{
+	
+	li{
+		width: 20%;
+		a{
+			text-transform: uppercase;
+			color: $secondary-color;
+			font-size: 1em;
+			margin-top: 40px;			
+			text-align: center;
+		}
+		
+	}
+
+	.nav-logo-fem{
+		height: 100px;
+		background-image: url("../../logo.png");
+		background-repeat: no-repeat;
+		background-size: 100px 100px;
+		background-position-x: center;
+
+	}
+}
+
+
+.orange-separator{    
+    background-image: url("../../home_banner.jpg");
+    height: 30px;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 20px 0 20px 0;    
+}
+
+
+
+.orange-separator-title{
+	
+	background-image: url("../../home_banner.jpg");
+	height: 80px;
+	background-repeat: no-repeat;
+	width: 100%;
+	text-align: center;
+	padding: 20px 0 20px 0;
+    margin-top: 10px;
+
+	h2{
+		text-transform: uppercase;
+		color: $secondary-color;
+		font-size: 40px;
+	}
+}
+
+.product-wrapper{		
+	.photo{
+		width: 50%;
+		float: left;
+	}
+	.description{
+		width: 50%;
+		float: right;
+	}
+}
+
+.buy-btn{
+    border: solid 1px black;
+}
+
+#fempowerment-container{       
+    width: 100%;
+    padding-bottom: 20px;
+    .description, .photo{
+        padding-top: 30px;        
+    }    
+
+    h2{
+        color: $third-color ;
+        font-size:40px;
+    }
+
+    h3{
+        color: $third-color ;
+    }
+
+    p{
+        line-height: 35px;
+    }
+    
+    a.learn-more{
+        color: $primary-color ;
+        font-size:20px;
+        margin-top: 30px;
+    }
+}
+
+footer{
+    background-image: url("../../footer.jpg");
+    height: 180px;
+    color: $secondary-color;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 20px 0 20px 0;  
+    text-align: center;    
+
+    a{
+        color: $secondary-color;
+        font-size: 15px;
+       
+    }
+    .link{
+         border-bottom-style: solid;
+         width: 75%; 
+    }
+    .hello{
+        font-size: 30px;
+    }
+}
+
+#featured-products-container{
+    @media (min-width: 576px) {
+        .carousel-item {
+            margin-right: 0;
+        }
+        /* show 2 items */
+        .carousel-inner .active + .carousel-item {
+            display: block;
+        }
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+            transition: none;
+        }
+        .carousel-inner .carousel-item-next {
+            position: relative;
+            transform: translate3d(0, 0, 0);
+        }
+        /* left or forward direction */
+        .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+        .carousel-item-next.carousel-item-left + .carousel-item,
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+        /* farthest right hidden item must be also positioned for animations */
+        .carousel-inner .carousel-item-prev.carousel-item-right {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+        /* right or prev direction */
+        .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+        .carousel-item-prev.carousel-item-right + .carousel-item,
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+    }
+
+}
+
+.top-content{
+    padding-top: 30px;
+    padding-bottom:  30px;
+}
+
+#featured-articles-container{
+
+    color: $secondary-color;
+    text-align: left;
+    a{
+        color: $secondary-color;
+    }
+    .article-wrapper-1{
+        background-image: url("../../fashion-week.jpg");
+        height: 280px;
+        background-repeat: no-repeat;
+        width: 100%;
+        padding: 20px 0 20px 0;  
+        text-align: center;            
+    }
+
+    .article-wrapper-2{
+        background-image: url("../../black-women-in-music.png");
+        height: 280px;
+        background-repeat: no-repeat;
+        width: 100%;
+        padding: 20px 0 20px 0;  
+        text-align: center;    
+        color: $secondary-color;
+    }
+
+    .article-wrapper-3{
+        background-image: url("../../smash-patriarchy.jpg");
+        height: 280px;
+        background-repeat: no-repeat;
+        width: 100%;
+        padding: 20px 0 20px 0;  
+        text-align: center;    
+        color: $secondary-color;
+    }
+
+   
+
+
+    @media (min-width: 576px) and (max-width: 768px) {
+    /* Show 3rd slide on sm if col-sm-6*/
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+    @media (min-width: 576px) {
+        .carousel-item {
+            margin-right: 0;
+        }
+        /* show 2 items */
+        .carousel-inner .active + .carousel-item {
+            display: block;
+        }
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+            transition: none;
+        }
+        .carousel-inner .carousel-item-next {
+            position: relative;
+            transform: translate3d(0, 0, 0);
+        }
+        /* left or forward direction */
+        .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+        .carousel-item-next.carousel-item-left + .carousel-item,
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+        /* farthest right hidden item must be also positioned for animations */
+        .carousel-inner .carousel-item-prev.carousel-item-right {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+        /* right or prev direction */
+        .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+        .carousel-item-prev.carousel-item-right + .carousel-item,
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+    }
+    /* MD */
+    @media (min-width: 768px) {
+        /* show 3rd of 3 item slide */
+        .carousel-inner .active + .carousel-item + .carousel-item {
+            display: block;
+        }
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+            transition: none;
+        }
+        .carousel-inner .carousel-item-next {
+            position: relative;
+            transform: translate3d(0, 0, 0);
+        }
+        /* left or forward direction */
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+        /* right or prev direction */
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+    }        
+}
+
+
+
+
