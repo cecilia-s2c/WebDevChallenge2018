@@ -1,6 +1,7 @@
 <?php
 add_filter('gform_register_init_scripts', 'gform_display_weeks', 10, 2);
-function gform_display_weeks($form) {
+function gform_display_weeks($form) { // this function takes in user information from form and based on estimated number of days, 
+  // and displays the 10 week reminder or the nine week warning as appropriate, as well as the term estimate all in the users preferred language
 $script = <<<EOT
   (function($){
 var vals = {
@@ -332,6 +333,15 @@ function bones_register_sidebars() {
     'id' => 'sidebar-social',
     'name' => __( 'Social Sidebar', 'bonestheme' ),
     'description' => __( 'The social sidebar.', 'bonestheme' ),
+    'before_widget' => '<div id="%1$s" class="module module--primary cf %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h2 class="h3 module__title">',
+    'after_title' => '</h2>',
+  ));
+  register_sidebar(array(
+    'id' => 'sidebar-advertising',
+    'name' => __( 'Advertising Sidebar', 'safe2choose-test' ),
+    'description' => __( 'The advertising sidebar.', 'safe2choose-test' ),
     'before_widget' => '<div id="%1$s" class="module module--primary cf %2$s">',
     'after_widget' => '</div>',
     'before_title' => '<h2 class="h3 module__title">',

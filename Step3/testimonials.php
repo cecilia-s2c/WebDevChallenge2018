@@ -38,7 +38,7 @@ Template Name: Testimonials Page
 						<?php
 							$testimonials_args = array (
 								'post_type' => 'testimonials',
-								'posts_per_page' => -1,
+								'posts_per_page' => -1, //indicates no limit to posts per page, equivalent to "'nopaging' => true"
 								'orderby' => 'date',
 								'order' => 'DESC'
 							);
@@ -50,12 +50,16 @@ Template Name: Testimonials Page
 									?>
 										<div class="quote" itemprop="review" itemscope="" itemtype="http://schema.org/Review">
 											<blockquote class="testimonials-text" itemprop="reviewBody">
-												<p><?php the_content(); ?></p>
+												<p><?php the_content($testimonials_posts->the_post(), true); ?></p>
 												<hr>
 												<p><i><?php the_date(); ?></i></p>
 											</blockquote>
 											<cite class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-												<span itemprop="name"><?php the_title(); ?></span>
+												<span itemprop="name">
+													<a href="<?php the_content() ?>">
+														<?php the_title(); ?>
+													</a>
+												></span>
 											</cite><!--/.author-->
 										</div><!-- End .quote -->
 									<?php } ?>
