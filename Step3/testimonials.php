@@ -30,14 +30,18 @@ Template Name: Testimonials Page
 					</article>
 				<?php endif; ?>
 			</main><!-- /End main -->
+
 		</div><!-- /end .inner-content -->
 		<div class="inner-content wrapper cf grid--five-one">
 			<div class="five-layout">
 				<article role="article">
 					<section class="entry-content" itemprop="articleBody">
 						<?php
+						<!-- -->
 							$testimonials_args = array (
 								'post_type' => 'testimonials',
+								/*We create a custom query, who is the form to say a Wordpress, these are the argument who you need to pass to the query.
+								The argument posts_per_page I say to wordpress, select -1 posts per page and show me*/
 								'posts_per_page' => -1,
 								'orderby' => 'date',
 								'order' => 'DESC'
@@ -48,16 +52,25 @@ Template Name: Testimonials Page
 									<?php while ( $testimonials_posts->have_posts() ) {
 										$testimonials_posts->the_post();
 									?>
-										<div class="quote" itemprop="review" itemscope="" itemtype="http://schema.org/Review">
-											<blockquote class="testimonials-text" itemprop="reviewBody">
-												<p><?php the_content(); ?></p>
-												<hr>
-												<p><i><?php the_date(); ?></i></p>
-											</blockquote>
-											<cite class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-												<span itemprop="name"><?php the_title(); ?></span>
-											</cite><!--/.author-->
-										</div><!-- End .quote -->
+									<!--Creating the temple for the post-->
+									<div class="post-template">
+
+											<div class="quote" itemprop="review" itemscope="" itemtype="http://schema.org/Review">
+												<blockquote class="testimonials-text" itemprop="reviewBody">
+													<p><?php the_excerpt(); ?></p>
+													<hr>
+													<p><i><?php the_date(); ?></i></p>
+												</blockquote>
+												<cite class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+													<span itemprop="name"><h3> <a href="<?php the_permalink();?>"><?php the_title(); ?></a></h3></span>
+												</cite><!--/.author-->
+											</div><!-- End .quote -->
+											<div class="read_more">
+												<p><a href="<?php the_permalink();?>">Read more</a></p>
+
+											</div>
+									</div>
+
 									<?php } ?>
 								</div><!-- /end .class="testimonials-list" -->
 						<?php }

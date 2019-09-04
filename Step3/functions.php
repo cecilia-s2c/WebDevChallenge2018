@@ -1,11 +1,23 @@
 <?php
 add_filter('gform_register_init_scripts', 'gform_display_weeks', 10, 2);
+
+//It is a php function that receives a form as a parameter and declares a Heredoc function that
+//receives the form data and according with the answers  php handle that data and save in variables
+//and run functions what stimate the date of your pregnancy.
+//This function has support for different languajes, that is the reason because it's an object and every field
+// have suport for each languaje available in the page
+
+
+
 function gform_display_weeks($form) {
+//Declaring a Heredoc string
+//The dot notation inside line 21 means concatenation betweet those variables
 $script = <<<EOT
   (function($){
 var vals = {
   en: {
     fields: {
+
       insertTenWeekReminderAfter: "#gform_page_4_6 .gform_page_fields",
       lmpWeeksLabel: "#field_4_59 > .gfield_label",
       dateSelect: "#input_4_19",
@@ -128,7 +140,7 @@ var vals = {
       nextButton: "#gform_next_button_23_21",
       nineWeekWarning: "#field_23_55",
       nineWeekAccept: "#input_23_55",
-      nineWeekAcceptYes: "#choice_23_55_1"
+      nineWeekAcceptYes: "#choice_23_55_1" |
     },
     text: {
       weeks: "semana (s)",
@@ -337,7 +349,20 @@ function bones_register_sidebars() {
     'before_title' => '<h2 class="h3 module__title">',
     'after_title' => '</h2>',
   ));
-  
+  register_sidebar(array(
+    'id' => 'sidebar-advertising',
+    'name' => __( 'Advertising Sidebar', 'bonestheme' ),
+    'description' => __( 'The advertising sidebar.', 'bonestheme' ),
+    'before_widget' => '<div id="%1$s" class="module module--primary cf %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="h3 module__title">',
+    'after_title' => '</h3>',
+  ));
+  add_action('after_setup_theme', 'bonestheme');
+  function bonestheme_setup(){
+      load_theme_textdomain('safe2choose-test', get_template_directory() . '/languages');
+  }
+
 } // don't remove this bracket!
-/* DON'T DELETE THIS CLOSING TAG */ 
+/* DON'T DELETE THIS CLOSING TAG */
 ?>
