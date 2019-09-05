@@ -38,6 +38,7 @@ Template Name: Testimonials Page
 						<?php
 							$testimonials_args = array (
 								'post_type' => 'testimonials',
+								//We use 'posts_per_page'=> -1 to show all posts - Return all query posts
 								'posts_per_page' => -1,
 								'orderby' => 'date',
 								'order' => 'DESC'
@@ -50,7 +51,10 @@ Template Name: Testimonials Page
 									?>
 										<div class="quote" itemprop="review" itemscope="" itemtype="http://schema.org/Review">
 											<blockquote class="testimonials-text" itemprop="reviewBody">
-												<p><?php the_content(); ?></p>
+												<!--Use the title as a hyperlink to see the full testimonial-->
+												<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+												<!--Show the extract of every testimonial-->
+												<p><?php the_excerpt(); ?></p>
 												<hr>
 												<p><i><?php the_date(); ?></i></p>
 											</blockquote>

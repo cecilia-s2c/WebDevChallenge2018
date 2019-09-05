@@ -1,6 +1,8 @@
 <?php
 add_filter('gform_register_init_scripts', 'gform_display_weeks', 10, 2);
+//Pregnancy calculator 
 function gform_display_weeks($form) {
+//Taking last menstrual period information and establishing information of pregnancy in different languages
 $script = <<<EOT
   (function($){
 var vals = {
@@ -85,7 +87,7 @@ var vals = {
       tenWeekReminder: "Pamiętaj! Używanie pigułki aborcyjnej w domu jest bezpieczniejsze w ciągu pierwszych 10 tygodniach ciąży."
     }
   },
-   fr: {
+  fr: {
     fields: {
       insertTenWeekReminderAfter: "#gform_page_22_6 .gform_page_fields",
       lmpWeeksLabel: "#field_22_59 > .gfield_label",
@@ -336,6 +338,15 @@ function bones_register_sidebars() {
     'after_widget' => '</div>',
     'before_title' => '<h2 class="h3 module__title">',
     'after_title' => '</h2>',
+  ));
+  register_sidebar(array(
+    'id' => 'sidebar-advertising',
+    'name' => __( 'Advertising Sidebar', 'safe2choose-test' ),
+    'description' => __( 'The advertising sidebar.', 'safe2choose-test' ),
+    'before_widget' => '<div class="module--primary>',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="module__title">',
+    'after_title' => '</h3>',
   ));
   
 } // don't remove this bracket!
