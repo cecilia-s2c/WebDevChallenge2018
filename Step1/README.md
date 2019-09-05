@@ -7,3 +7,5 @@
 * We should never pass the ID of current user as an argument to a Method. This would allow any client of the site to pass any user ID they want and set someone else's name. This is a Method only accessible by admin users, who are allowed to edit other users.
 
 * We could prevent that meteor methods can be called from anywhere ( malicious program, script in browser console, etc) defining rate limits for the methods that we use ( with in rate limiting for password login to stop password brute forcing).
+
+* It is not a good practice the use of console.log when we send count to external server because it is like if we would be giving hints to hackers about the route where we are storing the information and we are vulnerable to server attacks.
