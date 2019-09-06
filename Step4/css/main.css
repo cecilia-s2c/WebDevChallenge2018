@@ -1,0 +1,168 @@
+/*GENERAL*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*HEADER*/
+
+header {
+    background-image: url("../assets/images/home_bg.jpg");
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    width: 100%;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 2;
+}
+
+h1 {
+    color: white;
+    margin-top: 170px;
+}
+
+img#main-logo {
+    width: 110px;
+    position: absolute;
+    z-index: 1;
+    margin-top: -70px;
+}
+
+ul {
+    position: relative;
+    left: 15%;
+}
+
+/*CAROUSEL MAIN CONTENT-*/
+
+div.feat-prod {
+    background-image: url("../assets/images/home_banner.jpg");
+    height: 80px;
+    background-size: cover;
+    text-align: center;
+    width: 100%;
+}
+
+h3.subtitle {
+    color: white;
+    font-weight: 900;
+    padding: 25px;
+}
+
+div.feat-prod-2 {
+    background-image: url("../assets/images/footer.jpg");
+    height: 40px;
+    background-size: cover;
+    width: 100%;
+}
+
+div.gen-cont-fp {
+    height: 200px;
+}
+
+.black {
+    color: black;
+}
+
+img.products-to-sell {
+    height: 130px;
+}
+
+#product-align, #product-align-2 {
+    margin-left: 20%;
+}
+
+div.card {
+    border: 1px solid white;
+}
+
+a.btn-buy {
+    border: 1px solid black;
+}
+
+/*INFORMATION SECTION*/
+
+h2, h4 {
+    color: #f78f3b;
+}
+
+section.info-section {
+    padding: 30px; 
+}
+
+img.girls-pic {
+    height: 300px;
+}
+
+div.cont-girls-pic {
+    text-align: center;
+}
+
+/*FEATURED ARTICLES*/
+
+div.card {
+    height: fit-content;
+    background-size: cover;
+    color: white;
+}
+
+div.fashion-week {
+    background-image: url("../assets/images/fashion-week.jpg");
+    margin-left: 10%;
+    margin-right: 20px;
+}
+
+div.emancipation {
+    background-image: url("../assets/images/black-women-in-music.png");
+    margin-right: 20px;
+}
+
+div.feminist-play {
+    background-image: url("../assets/images/smash-patriarchy.jpg");
+    margin-right: 10%;
+}
+
+div.fashion-week, div.emancipation, div.feminist-play {
+    margin-top: 25px;
+}
+
+small.white, h6.white, ul.white {
+    color: white;
+}
+
+
+/*FOOTER*/
+
+div.footer-sect {
+    background-image: url("../assets/images/footer.jpg");
+    background-size: cover;
+    width: 100%;
+    margin-top: 25px;
+    height: fit-content;
+    text-align: center;
+}
+
+ul.menu-f {
+    margin-right: 33%;
+}
+
+.menu-f li {
+    display: inline-block;
+    position: relative;
+    text-decoration: underline;
+    padding-left: 10px;
+}
+
+.email {
+    padding: 30px;
+}
