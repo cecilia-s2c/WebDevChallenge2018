@@ -38,7 +38,10 @@ Template Name: Testimonials Page
 						<?php
 							$testimonials_args = array (
 								'post_type' => 'testimonials',
-								'posts_per_page' => -1,
+								////The posts_per_page tag defines the number of posts to display, 
+								//in this case the value is set to -1, so unlimited posts are brought.
+								//so if you want to show all your posts an option is to use the value -1
+								'posts_per_page' => -1, 
 								'orderby' => 'date',
 								'order' => 'DESC'
 							);
@@ -50,12 +53,14 @@ Template Name: Testimonials Page
 									?>
 										<div class="quote" itemprop="review" itemscope="" itemtype="http://schema.org/Review">
 											<blockquote class="testimonials-text" itemprop="reviewBody">
-												<p><?php the_content(); ?></p>
+												<!--CHANGE BY MARIA 14-11-19 <p><!-?php the_content(); ?></p-->
+												<p><?php the_excerpt();?></p>
 												<hr>
 												<p><i><?php the_date(); ?></i></p>
 											</blockquote>
 											<cite class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-												<span itemprop="name"><?php the_title(); ?></span>
+												<!--CHANGE BY MARIA 14-11-19 <span itemprop="name"><!-?php the_title(); ?></span-->
+												<span itemprop="name"><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></span>
 											</cite><!--/.author-->
 										</div><!-- End .quote -->
 									<?php } ?>
