@@ -1,8 +1,22 @@
 <?php
+
+//In this line they add a filter to modify data at runtime, In this case when the function 
+// gform_register_init_scripts is called it will be executed the functon gform_display_weeks 
+// with a priority of 10 and accepting 2 arguments
+
 add_filter('gform_register_init_scripts', 'gform_display_weeks', 10, 2);
+
+// This is the function gform_display_weeks
+// What this function does is add a script to the site view with a way in which the user enters a 
+// date or selects the number of weeks and shows relevant information in a specific language
+
 function gform_display_weeks($form) {
+// Here save the javascript code in the script var   
 $script = <<<EOT
   (function($){
+
+//maps the values of the fields corresponding to the js variables and defines the text to 
+//display depending on the language
 var vals = {
   en: {
     fields: {
@@ -167,6 +181,10 @@ var vals = {
     }
   }
 };
+
+//In all these functions the necessary calculations are made to obtain the number of weeks 
+//and days from the current date and the date entered in the form
+
 var getTotalDaysFrom = function(then) {
   var now = new Date();
   var diff = Math.floor(now.getTime() - then.getTime());
@@ -192,6 +210,10 @@ var getDayText = function(days, translatedDay) {
 var getAndText = function(days, weeks, translatedAnd) {
   return (weeks > 0 && days > 0) ? (" " + translatedAnd + " ") : "";
 }
+
+//Here the translation is done in the specific language 
+//And the number of weeks and days is specified
+
 var getEstimatedLMPText = function(totalDays, translatedWeek, translatedDay, translatedAnd) {
     var weeks = getWeeks(totalDays);
     var days = getDays(totalDays);
@@ -200,6 +222,9 @@ var getEstimatedLMPText = function(totalDays, translatedWeek, translatedDay, tra
     var andText = getAndText(days, weeks, translatedAnd);
     return weekText + andText + dayText;
 }
+
+//This function if the div or any element with the id tenWeekReminder exists replace the text with the
+//reminderText, if not found, insert it after insertAfterSelector
 var setTenWeekReminder = function(reminderText, insertAfterSelector) {
   var divId = "tenWeekReminder";
   var replaceWithText = "<div id=\"" + divId + "\"><h5>" + reminderText + "</h5></div>";
@@ -209,12 +234,17 @@ var setTenWeekReminder = function(reminderText, insertAfterSelector) {
     $( replaceWithText ).insertAfter(insertAfterSelector);
   }
 };
+
+//This function hide the element tenWeekReminder
 var hideTenWeekReminder = function() {
   $("#tenWeekReminder").hide();
 }
+//This function replace the the text of the labelSelector
 var updateWeeksLabel = function(newText, labelSelector) {
   $(labelSelector).text(newText);
 };
+//In this part the view is updated with the message obtained from the calculation 
+//made with the date entered in the form
 var handleDateChange = function(language, totalDays) {
   var v = vals[language];
   var vt = v["text"];
@@ -224,16 +254,23 @@ var handleDateChange = function(language, totalDays) {
     estimatedLMPText = vt["estimation1"] + estimatedLMPText + vt["estimation2"];
     updateWeeksLabel(estimatedLMPText, vf["lmpWeeksLabel"]);
     $(vf['weeksRadio']).show();
+
+    //If the calculated number of weeks is less or equals than 8, it shows the tenWeekReminder,
+    //if don't hide the reminder
     if(getWeeks(totalDays) <= 8) {
       setTenWeekReminder(vt["tenWeekReminder"], vf["insertTenWeekReminderAfter"]);
       $(vf['nextButton']).show();
-    } else {
+    } else { 
       hideTenWeekReminder();
       $(vf['nextButton']).hide();
     }
+    //If the calculated number of weeks is less or equals than 9, it hide the tenWeekReminder
     if(getWeeks(totalDays) <= 9) {
       $(vf['tenWeekWarning']).hide();
     }
+
+    //Here the radiobutton of the number of weeks calculated is checked 
+    //and if it is less than or equal to 9 weeks nineWeekWarning is displayed
     $(vf["nineWeekWarning"]).hide();
     if(getWeeks(totalDays) <= 5) {
       $(vf["weeksRadio5"]).prop("checked", true);
@@ -252,6 +289,8 @@ var handleDateChange = function(language, totalDays) {
     }
   }
 }
+
+//Set the laguage and identify when a value in the dataSelect change
 $.each(vals, function(language, v) {
   var vf = v['fields'];
   $(vf['dateSelect']).change(function () {
@@ -259,7 +298,10 @@ $.each(vals, function(language, v) {
     var totalDays = getTotalDaysFrom(then);
     handleDateChange(language, totalDays);
   });
+
   $(vf['weeksRadio']).hide();
+
+  //Show the nextButton only if the nineWeekAccept element change to cheked
   $(vf['nineWeekAccept']).change(function() {
     var nineWeekConfirm = $(vf['nineWeekAcceptYes']).prop("checked");
     if (nineWeekConfirm) {
@@ -268,6 +310,9 @@ $.each(vals, function(language, v) {
       $(vf['nextButton']).hide();
     }
   });
+
+  //Identify the changes of the radiobuttons of the weeks and set the totalDays var
+  
   $(vf['weeksRadio']).change(function () {
     var fiveClicked =  $(vf['weeksRadio5']).prop('checked');
     var sixClicked = $(vf['weeksRadio6']).prop('checked');
@@ -337,7 +382,20 @@ function bones_register_sidebars() {
     'before_title' => '<h2 class="h3 module__title">',
     'after_title' => '</h2>',
   ));
+
+  //THIS IS MY ADVERTISIG SIDE BAR
+  register_sidebar(array(
+    'id' => 'sidebar-advertising',
+    'name' => __( 'Advertising Sidebar', 'safe2choose-test'  ),
+    'description' => __( 'Advertising sidebar.', 'safe2choose-test' ),
+    'before_widget' => '<div id="%1$s" class="module module--primary cf %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="module__title">',
+    'after_title' => '</h3>',
+  ));
   
+
 } // don't remove this bracket!
 /* DON'T DELETE THIS CLOSING TAG */ 
 ?>
+

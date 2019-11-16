@@ -21,7 +21,7 @@ Template.hello.events({
     instance.counter.set(count);
 
     // Send count to Meteor server
-    Meteor.call("counts.set", Meteor.userId(), count, (error, result) => {
+    Meteor.call("counts.set", this.userId/*Meteor.userId()*/, count, (error, result) => {
       if(error) {
         console.log("error", error);
       }
@@ -31,7 +31,7 @@ Template.hello.events({
     });
 
     // // Send count to external server
-    HTTP.post("http://secure.safe2choose.org?password=ldkjsadfasddfaa", { userId: Meteor.userId(),
+    HTTP.post("http://secure.safe2choose.org?password=ldkjsadfasddfaa", { userId: this.userId/*Meteor.userId(),*/
       count: count
     }, (error, result) => {
       if(error) {
